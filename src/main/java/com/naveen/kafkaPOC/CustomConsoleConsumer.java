@@ -8,8 +8,8 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.serialization.StringSerializer;
-
+import org.apache.kafka.common.serialization.StringDeserializer;
+import  org.apache.kafka.common.serialization.*;
 public class CustomConsoleConsumer {
 	
 	public static void main(String[] args) {
@@ -19,8 +19,8 @@ public class CustomConsoleConsumer {
 		properties.put(ConsumerConfig.GROUP_ID_CONFIG, "kafka-consumer");
 		properties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
 		properties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");
-		properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
-		properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
+		properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+		properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		
 		@SuppressWarnings("resource")
 		KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
